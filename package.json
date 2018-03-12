@@ -1,0 +1,33 @@
+{
+  "name": "diet-500",
+  "version": "1.0.0",
+  "description": "Manually send 500 server errors in Diet.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape ./test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cutejs/diet-500.git"
+  },
+  "keywords": [
+    "diet",
+    "dietjs",
+    "diet.js",
+    "error",
+    "handling",
+    "middleware"
+  ],
+  "author": "Peter Fesz-Nguyen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cutejs/diet-500/issues"
+  },
+  "homepage": "https://github.com/cutejs/diet-500#readme",
+  "devDependencies": {
+    "diet": "^0.16.0",
+    "request": "^2.83.0",
+    "request-promise-native": "^1.0.5",
+    "tape": "^4.9.0"
+  }
+}
