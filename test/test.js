@@ -17,24 +17,34 @@ function Test (port, methodName) {
 		app.get('/', function ($) {
 			Promise.reject(new Error('Time to die!')).catch(err => {
 				if (!methodName) {
-					$.error(err)
+					$.err(err)
 				} else {
 					$[methodName](err)
 				}
 			})
 		})
 
+		app.get('/ok', function ($) {
+			$.end('Response')
+		})
+
 		request(hostname).then(() => {
 			t.fail('Received a response where an error was expected')
-			t.end()
 		}).catch(err => {
 			t.equal(err.statusCode, 500, 'Route responded with a 500 Internal Server Error')
+		}).then(() => {
+			return request(hostname + '/ok')
+		}).then(res => {
+			t.equal(res, 'Response', 'Server continues to function ok')
+			t.end()
+		}).catch(err => {
+			t.error(err)
 			t.end()
 		})
 	}
 }
 
-test('Should respond with a 500 server error if $.error is called', Test('7777'))
+test('Should respond with a 500 server error if $.err is called', Test('7777'))
 
 test('Should respond with a 500 server error if $[methodName] is called', Test('8888', 'serverError'))
 

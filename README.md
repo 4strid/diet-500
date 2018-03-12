@@ -13,7 +13,7 @@ Installation
 ```
 npm install --save diet-500
 ```
-Note that in modern versions of NPM you don't actually need the `--save` flag.
+Note that in modern versions of NPM (>= 5) you don't actually need the `--save` flag.
 
 Usage
 -----
@@ -31,13 +31,13 @@ app.get('/', function ($) {
 	return Promise.resolve().then(() => {
 		throw new Error('Time to die!')
 	}).catch(err => {
-		$.error(err)
+		$.err(err)
 	})
 })
 ```
 
-By default, this overrides Diet's native `$.error` function as I personally know I will never
-use it. If you'd prefer to use a different method name, you can specify one.
+By default, the method attached to the signal is `err`. You can specify a different method name
+if you like.
 
 ```javascript
 const server      = require('diet')

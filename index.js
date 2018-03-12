@@ -7,7 +7,7 @@ function Middleware (name) {
 	}
 }
 
-const middleware = Middleware('error')
+const middleware = Middleware('err')
 
 middleware.methodName = function (name) {
 	return Middleware(name)
